@@ -339,8 +339,8 @@ body {
 
 /* ============ SOFT GRAND HERO BANNER ============ */
 .hero-banner {
-    background: #12121a; /* Soft Matte Charcoal */
-    border-bottom: 2px solid var(--border);
+    background: #0a0a0f; /* Deep Stealth Black (Matches Feed) */
+    border-bottom: 4px solid var(--fire); /* Bold vibrant line */
     padding: 25px 40px;
     position: sticky;
     top: 0;
@@ -348,7 +348,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
     min-height: 140px;
 }
 
@@ -928,9 +928,17 @@ body {
         display: block;
     }
 
+    .hero-banner {
+        background: #0a0a0f;
+        border-bottom: 4px solid var(--accent);
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
     .stats-bar {
         padding: 16px;
         gap: 8px;
+    <script src="/static/app.js?v=3.3"></script>
     }
 
     .stat-card {
