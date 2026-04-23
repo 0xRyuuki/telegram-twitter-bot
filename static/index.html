@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Alpha Dashboard — Live Feed</title>
+    <meta name="description" content="Real-time crypto alpha feed from Twitter, Reddit, and on-chain trackers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=2.1">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-text">Alpha Feed</span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose">✕</button>
+        </div>
+
+        <!-- Source Tabs -->
+        <div class="sidebar-section">
+            <div class="section-title">SOURCE</div>
+            <div class="source-tabs">
+                <button class="source-tab active" data-source="all">All</button>
+                <button class="source-tab" data-source="twitter">𝕏 Twitter</button>
+                <button class="source-tab" data-source="reddit">Reddit</button>
+            </div>
+        </div>
+
+        <!-- Event Categories -->
+        <div class="sidebar-section">
+            <div class="section-title">EVENT CATEGORIES</div>
+            <div id="categoryFilters" class="filter-list">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Alpha Groups -->
+        <div class="sidebar-section">
+            <div class="section-title">ALPHA GROUPS</div>
+            <div id="groupFilters" class="filter-list">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Priority Filter -->
+        <div class="sidebar-section">
+            <div class="section-title">PRIORITY</div>
+            <div class="filter-list">
+                <label class="filter-item">
+                    <input type="checkbox" id="filterCrossover" class="filter-checkbox">
+                    <span class="filter-label">🔥 Crossover Only</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Bot Controller -->
+        <div class="sidebar-section bot-controller">
+            <div class="section-title">BOT ENGINE</div>
+            <div class="bot-status-card" id="botStatusCard">
+                <div class="bot-status-info">
+                    <span class="status-dot online" id="botStatusDot"></span>
+                    <span class="status-text" id="botStatusText">Online</span>
+                </div>
+                <button class="bot-toggle-btn" id="botToggleBtn">Stop Engine</button>
+            </div>
+            <p class="bot-status-desc">Controls global background polling for all categories.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <h1 class="page-title">Live Feed</h1>
+            <div class="topbar-actions">
+                <div class="live-indicator" id="liveIndicator">
+                    <span class="live-dot"></span>
+                    <span>LIVE</span>
+                </div>
+                <button class="refresh-btn" id="themeToggle" title="Toggle Dark/Light Mode">🌓</button>
+                <button class="refresh-btn" id="refreshBtn" title="Refresh now">⟳</button>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value" id="statTotal">—</div>
+                <div class="stat-label">Total Alerts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statToday">—</div>
+                <div class="stat-label">Last 24h</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statTwitter">—</div>
+                <div class="stat-label">Twitter</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statReddit">—</div>
+                <div class="stat-label">Reddit</div>
+            </div>
+            <div class="stat-card highlight">
+                <div class="stat-value" id="statCrossovers">—</div>
+                <div class="stat-label">🔥 Crossovers</div>
+            </div>
+        </div>
+
+        <!-- Feed -->
+        <div class="feed-container" id="feedContainer">
+            <div class="feed-loading" id="feedLoading">
+                <div class="spinner"></div>
+                <p>Loading feed...</p>
+            </div>
+            <div class="feed-empty" id="feedEmpty" style="display:none;">
+                <div class="empty-icon">📡</div>
+                <h3>No alerts yet</h3>
+                <p>The bot is scanning. New alerts will appear here in real-time.</p>
+            </div>
+            <div id="feedList" class="feed-list"></div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+            <button class="load-more-btn" id="loadMoreBtn">Load more</button>
+        </div>
+    </main>
+
+    <script src="/static/app.js?v=2.1"></script>
+</body>
+</html>

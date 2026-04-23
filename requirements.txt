@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-telegram-bot
+requests
+python-dotenv
+sqlite3
+# RapidAPI twitter-api45 doesn't have a specific library, usually uses requests

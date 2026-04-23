@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: crypto-alpha-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DB_PATH
+        value: /data/bot_database.db
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1
