@@ -26,8 +26,8 @@
     --accent-light: #a29bfe;
 
     /* Priority */
-    --fire: #ff6b35;
-    --fire-glow: rgba(255, 107, 53, 0.3);
+    --fire: #2ecc71; /* Light Neon Green */
+    --fire-glow: rgba(46, 204, 113, 0.4);
     --blue: #0984e3; /* Bold Blue */
     --blue-glow: rgba(9, 132, 227, 0.2);
     --success: #00cec9;
@@ -340,19 +340,18 @@ body {
 /* ============ SOFT GRAND HERO BANNER ============ */
 .hero-banner {
     background: #0a0a0f; 
-    border: 2px solid var(--border); /* Full border instead of just bottom */
-    border-bottom: 4px solid var(--fire); 
+    border: 3px solid var(--fire); /* Full Glowing Green Border */
     padding: 25px 40px;
     position: sticky;
-    top: 15px; /* Floating look */
+    top: 15px; 
     margin: 0 15px 25px 15px;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 30px var(--fire-glow); /* Neon Green Glow */
     min-height: 140px;
-    border-radius: 30px; /* Deep Curve */
+    border-radius: 30px; 
 }
 
 .hero-bg-glow {
