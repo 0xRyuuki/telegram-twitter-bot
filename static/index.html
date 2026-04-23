@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css?v=2.8">
+    <link rel="stylesheet" href="/static/style.css?v=2.9">
 </head>
 <body>
 
@@ -75,28 +75,49 @@
     <div class="content-wrapper">
         <!-- MAIN CONTENT -->
         <main class="main-content">
-            <!-- Top Bar -->
-            <header class="topbar">
-                <button class="menu-toggle" id="menuToggle">☰</button>
-                <h1 class="page-title">Live Feed</h1>
-                <div class="topbar-actions">
-                    <div class="live-indicator" id="liveIndicator">
-                        <span class="live-dot"></span>
-                        <span>LIVE</span>
+            <!-- GRAND HERO BANNER -->
+            <header class="hero-banner">
+                <div class="hero-bg-glow"></div>
+                <div class="hero-content">
+                    <div class="hero-branding">
+                        <h1 class="hero-title">ALPHA FEED</h1>
+                        <div class="hero-tagline">REAL-TIME CRYPTO INTELLIGENCE HUD</div>
                     </div>
-                    <button class="refresh-btn" id="themeToggle" title="Toggle Dark/Light Mode">🌓</button>
-                    <button class="refresh-btn" id="refreshBtn" title="Refresh now">⟳</button>
+                    
+                    <div class="hero-stats-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">TOTAL SIGNALS</span>
+                            <span class="hud-value" id="statTotal">—</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">LAST 24H</span>
+                            <span class="hud-value" id="statToday">—</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">𝕏 TWITTER</span>
+                            <span class="hud-value" id="statTwitter">—</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">REDDIT</span>
+                            <span class="hud-value" id="statReddit">—</span>
+                        </div>
+                        <div class="hud-item highlight">
+                            <span class="hud-label">🔥 CROSSOVERS</span>
+                            <span class="hud-value" id="statCrossovers">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <div class="live-status">
+                        <span class="live-dot"></span>
+                        LIVE ENGINE
+                    </div>
+                    <button class="hero-btn" id="themeToggle" title="Toggle Mode">🌓</button>
+                    <button class="hero-btn" id="refreshBtn" title="Refresh Feed">⟳</button>
+                    <button class="menu-toggle" id="menuToggle">☰</button>
                 </div>
             </header>
-
-            <!-- Slim Stats Ribbon -->
-            <div class="slim-stats">
-                <div class="s-pill">TOTAL: <span id="statTotal">—</span></div>
-                <div class="s-pill">LAST 24H: <span id="statToday">—</span></div>
-                <div class="s-pill">𝕏: <span id="statTwitter">—</span></div>
-                <div class="s-pill">REDDIT: <span id="statReddit">—</span></div>
-                <div class="s-pill highlight">🔥: <span id="statCrossovers">—</span></div>
-            </div>
 
             <!-- Feed -->
             <div class="feed-container" id="feedContainer">
@@ -130,6 +151,6 @@
         </aside>
     </div>
 
-    <script src="/static/app.js?v=2.8"></script>
+    <script src="/static/app.js?v=2.9"></script>
 </body>
 </html>
