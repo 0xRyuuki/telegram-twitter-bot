@@ -68,7 +68,7 @@ TOPIC_CLUSTERS = {
     "hack": ["hack", "exploit", "stolen", "compromised", "phishing", "drainer"],
     "discussion": ["thoughts", "opinion", "thread", "discuss", "what do you think"],
     "TGE": ["tge", "token generation event", "token launch", "now trading", "just launched", "trading live"],
-    "signals/moves": ["bought", "buying", "sold", "added to bag", "long", "short", "position", "accumulate", "dip"],
+    "signals/moves": ["bought", "buying", "sold", "added to bag", "long", "short", "position", "accumulate", "dip", "chart", "technical analysis", "ta ", "rsi", "macd", "moving average", "fibonacci", "head and shoulders", "cup and handle", "wedge", "pattern", "indicator", "trend line", "volume profile"],
     "AI AGENT": ["\"base ca\"", "base contract address", "\"ca on base\"", "launching on base", "deploying on base"]
 }
 
