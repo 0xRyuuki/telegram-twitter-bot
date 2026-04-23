@@ -367,10 +367,11 @@ body {
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px; /* Tighter gap */
     z-index: 1;
     align-items: flex-start;
-    justify-content: center; /* Vertical Sync */
+    justify-content: center;
+    margin-top: -5px; /* Pull EVERYTHING up slightly */
 }
 
 .hero-branding {
@@ -401,7 +402,8 @@ body {
 
 .hero-stats-hud {
     display: flex;
-    gap: 15px; /* Tighter gaps for the pods */
+    gap: 12px;
+    margin-top: -2px; /* Precision lift */
 }
 
 .hud-item {
@@ -966,8 +968,8 @@ body {
 
     .stats-bar {
         padding: 16px;
-        gap: 8px;
-    <link rel="stylesheet" href="/static/style.css?v=4.0"></script>
+        gap: 4px;
+        <script src="/static/app.js?v=4.2"></script>
     }
 
     .stat-card {
