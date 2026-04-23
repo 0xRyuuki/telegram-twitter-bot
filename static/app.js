@@ -25,6 +25,7 @@ const state = {
     stats: null,
     isBotActive: true,
     theme: localStorage.getItem('alpha-theme') || 'dark',
+    smartFollows: [],
 };
 
 // Apply theme immediately to avoid flash
@@ -48,8 +49,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Auto-refresh every 30 seconds
     state.refreshInterval = setInterval(() => {
         pollNewItems();
+        pollSmartFollows();
         updateBotStatus();
     }, 30000);
+    
+    // Initial poll for smart follows
+    pollSmartFollows();
 });
 
 // ======== SIDEBAR (Mobile) ========
@@ -235,6 +240,53 @@ async function pollNewItems() {
     // Also update stats
     loadStats();
 }
+
+// ======== POLL SMART FOLLOWS ========
+async function pollSmartFollows() {
+    const params = { category: 'smart_follow', limit: 10, _t: Date.now() };
+    const data = await fetchJSON(API.feed, params);
+    
+    if (data && data.items) {
+        state.smartFollows = data.items;
+        renderSmartFollows();
+    }
+}
+
+function renderSmartFollows() {
+    const list = document.getElementById('smartFollowList');
+    if (!list) return;
+    
+    if (state.smartFollows.length === 0) {
+        list.innerHTML = '<div class="empty-state">Monitoring Alpha Groups...</div>';
+        return;
+    }
+    
+    list.innerHTML = '';
+    state.smartFollows.forEach(item => {
+        list.appendChild(createSmartFollowCard(item));
+    });
+}
+
+function createSmartFollowCard(item) {
+    let extra = {};
+    if (item.extra_json) {
+        try { extra = JSON.parse(item.extra_json); } catch(e) {}
+    }
+    
+    const card = document.createElement('div');
+    card.className = 'smart-follow-card';
+    
+    card.innerHTML = `
+        <span class="smart-follow-tag">NEW PROJECT</span>
+        <span class="sf-alpha"><span>${item.author}</span> followed</span>
+        <a href="${item.url}" target="_blank" class="sf-target">@${extra.target_handle || 'Project'}</a>
+        <span class="sf-followers">👤 ${formatNum(extra.followers || 0)} Followers</span>
+        <div class="sf-bio">${item.body || 'No description available.'}</div>
+    `;
+    
+    return card;
+}
+
 
 // ======== LOAD STATS ========
 async function loadStats() {

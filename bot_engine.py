@@ -39,6 +39,8 @@ def setup_bot_application():
         app.job_queue.run_repeating(check_global_category_updates, interval=300, first=5)
         app.job_queue.run_repeating(check_alpha_group_updates, interval=300, first=150)
         app.job_queue.run_repeating(check_reddit_alpha_updates, interval=1800, first=60)
+        # Check for new follows every 2 hours
+        app.job_queue.run_repeating(check_alpha_followings, interval=7200, first=300)
         
     return app
 
@@ -448,6 +450,88 @@ async def check_reddit_alpha_updates(context: ContextTypes.DEFAULT_TYPE):
             except Exception as e:
                 logging.error(f"Failed to send Reddit alert to {chat_id}: {e}")
                             
+
+async def check_alpha_followings(context: ContextTypes.DEFAULT_TYPE):
+    """Background task to detect new project follows by Alpha accounts."""
+    if db.get_system_config('bot_active', '1') == '0':
+        return
+
+    logging.info("Checking for new Smart Follows by Alpha accounts...")
+    
+    # We focus on a subset of groups to save API credits, or do all if needed
+    # For now, let's do all accounts but slowly
+    alpha_accounts = []
+    for group, users in tt.ALPHA_GROUPS.items():
+        for user in users:
+            alpha_accounts.append((user, group))
+
+    for alpha_handle, group in alpha_accounts:
+        logging.info(f"Checking followings for @{alpha_handle}...")
+        current_following = await asyncio.to_thread(tt.fetch_following, alpha_handle, limit=100)
+        if not current_following:
+            await asyncio.sleep(2)
+            continue
+            
+        known_following = db.get_user_following(alpha_handle)
+        
+        # If DB is empty for this user, seed it and skip (to avoid alerting on 100 old follows)
+        if not known_following:
+            for u in current_following:
+                db.add_user_following(alpha_handle, u['screen_name'])
+            await asyncio.sleep(2)
+            continue
+
+        for u in current_following:
+            target_handle = u['screen_name']
+            if target_handle not in known_following:
+                # NEW FOLLOW DETECTED!
+                db.add_user_following(alpha_handle, target_handle)
+                
+                # Filter: Followers < 1000
+                if u['followers'] >= 1000:
+                    continue
+                    
+                # Filter: Is it a project?
+                bio = u['description'].lower()
+                is_project = any(kw in bio for kw in tt.PROJECT_KEYWORDS)
+                
+                if is_project:
+                    # SMART FOLLOW ALERT!
+                    logging.info(f"🚀 SMART FOLLOW: @{alpha_handle} followed @{target_handle} ({u['followers']} followers)")
+                    
+                    message = (
+                        f"🚀 <b>SMART FOLLOW DETECTED</b>\n"
+                        f"━━━━━━━━━━━━━━━━━━━━\n"
+                        f"👤 Alpha: @{alpha_handle} ([{group.upper()}])\n"
+                        f"🎯 New Follow: @{target_handle}\n"
+                        f"📊 Reach: {u['followers']} Followers\n"
+                        f"📝 Bio: {u['description']}\n\n"
+                        f"🔗 https://twitter.com/{target_handle}"
+                    )
+                    
+                    # Save to DB for the dashboard
+                    db.save_feed_item(
+                        source='twitter',
+                        source_id=f"follow_{alpha_handle}_{target_handle}_{asyncio.get_event_loop().time()}",
+                        category='smart_follow',
+                        group_name=group,
+                        author=f"@{alpha_handle}",
+                        title=f"Followed @{target_handle}",
+                        body=u['description'],
+                        url=f"https://twitter.com/{target_handle}",
+                        priority='high',
+                        extra={'followers': u['followers'], 'target_handle': target_handle}
+                    )
+                    
+                    # Notify all active chats
+                    all_chats = db.get_all_chats()
+                    for chat_id in all_chats:
+                        try:
+                            await context.bot.send_message(chat_id=chat_id, text=message, parse_mode=ParseMode.HTML)
+                        except Exception as e:
+                            logging.error(f"Failed to send follow alert to {chat_id}: {e}")
+
+        await asyncio.sleep(5) # Slow crawl to stay under rate limits
 
 async def post_init(application: Application):
     """Set the initial bot commands to display in the Telegram menu button."""

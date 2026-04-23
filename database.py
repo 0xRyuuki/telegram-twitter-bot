@@ -88,6 +88,17 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+
+    # Table for tracking user following lists for change detection
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_followings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            alpha_handle TEXT NOT NULL,
+            followed_handle TEXT NOT NULL,
+            first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(alpha_handle, followed_handle)
+        )
+    ''')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_feed_source ON feed_items(source)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_feed_category ON feed_items(category)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_feed_created ON feed_items(created_at DESC)')
@@ -377,4 +388,23 @@ def set_system_config(key, value):
         conn.commit()
     finally:
         conn.close()
+
+# === FOLLOW TRACKING FUNCTIONS ===
+
+def get_user_following(alpha_handle):
+    """Returns a set of handles that this alpha account is already known to follow."""
+    with get_db() as conn:
+        cursor = conn.execute('SELECT followed_handle FROM user_followings WHERE alpha_handle = ?', (alpha_handle,))
+        return {row[0] for row in cursor.fetchall()}
+
+def add_user_following(alpha_handle, followed_handle):
+    """Records that an alpha account follows a specific handle."""
+    with get_db() as conn:
+        try:
+            conn.execute('INSERT INTO user_followings (alpha_handle, followed_handle) VALUES (?, ?)', 
+                         (alpha_handle, followed_handle))
+            conn.commit()
+        except Exception:
+            pass # Already exists or other error
+
 

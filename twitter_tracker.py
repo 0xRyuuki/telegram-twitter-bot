@@ -55,7 +55,14 @@ AIRDROP_SPAM_PHRASES = [
     "comment your address", "tag 3 friends", "share this post",
     "rt this", "must follow", "follow + like", "like + rt",
     "tag a friend", "retweet this", "comment below",
-    "follow & retweet", "gleam.io", "enter giveaway"
+    "follow and retweet", "gleam.io", "enter giveaway"
+]
+
+# Keywords that suggest an account is a "Project" (Protocol, Labs, L2, etc.)
+PROJECT_KEYWORDS = [
+    "protocol", "network", "labs", "defi", "dex", "l1", "l2", "agent", "ai", 
+    "foundation", "ecosystem", "core", "infrastructure", "dao", "stablecoin",
+    "liquidity", "yield", "aggregator", "oracle", "bridge", "appchain"
 ]
 
 # === TOPIC CLUSTERS (used for matching tweets to categories) ===
@@ -312,3 +319,27 @@ def fetch_alpha_group(group_name, limit=5):
             })
             
     return all_results[:limit]
+
+def fetch_following(screen_name, limit=100):
+    """
+    Fetches the list of accounts a user is following.
+    Returns a list of user objects with screen_name, followers_count, and description.
+    """
+    url = "https://twitter-api45.p.rapidapi.com/following.php"
+    querystring = {"screenname": screen_name}
+    
+    data = _call_rapidapi(url, querystring)
+    if not data or 'following' not in data:
+        return []
+        
+    results = []
+    for u in data['following'][:limit]:
+        results.append({
+            'screen_name': u.get('screen_name', ''),
+            'name': u.get('name', ''),
+            'followers': u.get('followers_count', 0),
+            'description': u.get('description', ''),
+            'id': u.get('rest_id', '')
+        })
+    return results
+
