@@ -149,7 +149,13 @@ def fetch_category_global(category_name, limit=5):
         date = t.get('created_at', 'Unknown Date')
         author_name = t.get('screen_name', 'UnknownUser')
         
-        display_name = t.get('user_info', {}).get('name', '').lower()
+        # --- FOLLOWER BARRIER: Minimum 500 followers ---
+        user_info = t.get('user_info', {})
+        followers = user_info.get('followers_count', 0)
+        if followers < 500:
+            continue
+            
+        display_name = user_info.get('name', '').lower()
         if 'support' in display_name or 'helpdesk' in display_name or 'customer service' in display_name:
             continue
         
@@ -270,7 +276,13 @@ def fetch_alpha_group(group_name, limit=5):
             date = t.get('created_at', 'Unknown Date')
             author_name = t.get('screen_name', 'UnknownUser')
             
-            display_name = t.get('user_info', {}).get('name', '').lower()
+            # --- FOLLOWER BARRIER: Minimum 500 followers ---
+            user_info = t.get('user_info', {})
+            followers = user_info.get('followers_count', 0)
+            if followers < 500:
+                continue
+                
+            display_name = user_info.get('name', '').lower()
             if 'support' in display_name or 'helpdesk' in display_name or 'customer service' in display_name:
                 continue
             
