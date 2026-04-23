@@ -265,7 +265,7 @@ async def check_global_category_updates(context: ContextTypes.DEFAULT_TYPE):
                     body=tweet['text'],
                     url=tweet['url'],
                     priority='crossover' if priority_flag else 'normal',
-                    extra={'date': tweet.get('date', '')}
+                    extra={'date': tweet.get('date', ''), 'followers': tweet.get('followers', 0)}
                 )
 
                 for chat_id in all_chats:
@@ -350,7 +350,7 @@ async def check_alpha_group_updates(context: ContextTypes.DEFAULT_TYPE):
                     body=tweet['text'],
                     url=tweet['url'],
                     priority='crossover' if is_crossover else 'normal',
-                    extra={'date': tweet.get('date', '')}
+                    extra={'date': tweet.get('date', ''), 'followers': tweet.get('followers', 0)}
                 )
 
                 for chat_id in all_chats:

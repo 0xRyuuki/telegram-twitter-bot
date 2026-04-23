@@ -235,7 +235,8 @@ def fetch_category_global(category_name, limit=5):
             'author': f"@{author_name}",
             'date': date,
             'matched_category': category_name,
-            'url': f'https://twitter.com/{author_name}/status/{t_id}'
+            'url': f'https://twitter.com/{author_name}/status/{t_id}',
+            'followers': followers
         })
     return results
 
@@ -306,7 +307,8 @@ def fetch_alpha_group(group_name, limit=5):
                 'author': f"@{author_name}",
                 'date': date,
                 'matched_group': group_name,
-                'url': f'https://twitter.com/{author_name}/status/{t_id}'
+                'url': f'https://twitter.com/{author_name}/status/{t_id}',
+                'followers': followers
             })
             
     return all_results[:limit]

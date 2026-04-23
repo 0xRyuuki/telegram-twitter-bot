@@ -343,12 +343,30 @@ function createFeedCard(item, isNew) {
 
     card.appendChild(header);
 
-    // Author
+    // Parse extra info for badges (like followers)
+    let extra = {};
+    if (item.extra_json) {
+        try { extra = JSON.parse(item.extra_json); } catch(e) {}
+    }
+
+    // Author & Followers
     if (item.author) {
-        const author = document.createElement('div');
+        const authorLine = document.createElement('div');
+        authorLine.className = 'card-author-line';
+        
+        const author = document.createElement('span');
         author.className = 'card-author';
         author.textContent = item.author;
-        card.appendChild(author);
+        authorLine.appendChild(author);
+
+        if (extra.followers) {
+            const folBadge = document.createElement('span');
+            folBadge.className = 'follower-badge';
+            folBadge.innerHTML = `<i class="fol-icon">👤</i> ${formatNum(extra.followers)} Followers`;
+            authorLine.appendChild(folBadge);
+        }
+        
+        card.appendChild(authorLine);
     }
 
     // Title (for Reddit)

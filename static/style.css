@@ -131,8 +131,9 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    position: relative; /* For the banner */
+    position: relative;
 }
+
 
 
 .logo-icon {
@@ -152,6 +153,8 @@ body {
     position: relative;
     z-index: 1;
 }
+
+
 
 /* Banner element removed in favor of background-image */
 
@@ -594,12 +597,36 @@ body {
     white-space: nowrap;
 }
 
+.card-author-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
 .card-author {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-light);
-    margin-bottom: 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.follower-badge {
+    background: rgba(9, 132, 227, 0.1);
+    color: var(--blue);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border: 1px solid rgba(9, 132, 227, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
     text-transform: uppercase;
+}
+
+.fol-icon {
+    font-style: normal;
+    font-size: 0.8rem;
 }
 
 .card-title {
