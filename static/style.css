@@ -368,13 +368,15 @@ body {
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     z-index: 1;
+    align-items: flex-start; /* Branding stays left */
 }
 
 .hero-branding {
     display: flex;
     flex-direction: column;
+    margin-bottom: 5px;
 }
 
 .hero-title {
@@ -399,17 +401,20 @@ body {
 
 .hero-stats-hud {
     display: flex;
-    gap: 35px;
+    gap: 15px; /* Tighter gaps for the pods */
 }
 
 .hud-item {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 10px 20px;
-    border-radius: 20px; /* Curved Pods */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    min-width: 120px;
+    align-items: center; /* PERFECT SYNC: Centered text */
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 110px;
+    text-align: center;
 }
 
 .hud-label {
@@ -947,7 +952,7 @@ body {
     .stats-bar {
         padding: 16px;
         gap: 8px;
-    <link rel="stylesheet" href="/static/style.css?v=3.5"></script>
+    <link rel="stylesheet" href="/static/style.css?v=3.6"></script>
     }
 
     .stat-card {
