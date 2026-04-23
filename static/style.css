@@ -712,18 +712,25 @@ body {
 
 .logo {
     background: #0a0a0f; /* Stealth Black */
-    padding: 12px 20px;
+    padding: 8px 18px; /* Slightly tighter padding for logo */
     border-radius: 40px; /* Deep Curve */
     display: flex;
     align-items: center;
+    gap: 12px; /* Space between logo and text */
     justify-content: center;
     box-shadow: 0 0 15px var(--fire-glow);
     border: 2px solid var(--fire); /* Glowing Green Border */
 }
 
+.logo-img {
+    height: 32px; /* Precision sized */
+    width: auto;
+    object-fit: contain;
+}
+
 .logo-text {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 800;
     color: var(--fire); /* Neon Green Text */
     letter-spacing: -0.5px;
@@ -969,7 +976,7 @@ body {
     .stats-bar {
         padding: 16px;
         gap: 4px;
-        <script src="/static/app.js?v=4.2"></script>
+        <link rel="stylesheet" href="/static/style.css?v=4.3">
     }
 
     .stat-card {
