@@ -450,23 +450,29 @@ body {
     height: 6px;
     background: var(--success);
     border-radius: 50%;
-    <script src="/static/app.js?v=3.0"></script>nfinite;
+    animation: pulse 2s infinite;
 }
 
 .hero-btn {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Perfect Circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     font-size: 0.9rem;
     transition: all 0.2s ease;
 }
 
 .hero-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
+    transform: translateY(-2px);
 }
 
 .feed-container {
