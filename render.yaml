@@ -8,8 +8,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.0
       - key: DB_PATH
-        value: /data/bot_database.db
-    disk:
-      name: bot-data
-      mountPath: /data
-      sizeGB: 1
+        value: bot_database.db
