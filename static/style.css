@@ -1018,6 +1018,40 @@ body {
     margin-top: 8px;
     line-height: 1.4;
 }
+.slim-stats {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.s-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.s-pill span {
+    color: var(--accent-light);
+    margin-left: 4px;
+}
+
+.s-pill.highlight {
+    border-color: var(--fire);
+    color: var(--fire);
+}
+
+.s-pill.highlight span {
+    color: var(--fire);
+}
+
 .feed-container {
-    padding-top: 25px;
+    padding-top: 5px;
 }

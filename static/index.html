@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css?v=2.7">
+    <link rel="stylesheet" href="/static/style.css?v=2.8">
 </head>
 <body>
 
@@ -89,28 +89,13 @@
                 </div>
             </header>
 
-            <!-- Stats Bar -->
-            <div class="stats-bar">
-                <div class="stat-card">
-                    <div class="stat-value" id="statTotal">—</div>
-                    <div class="stat-label">Total Alerts</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="statToday">—</div>
-                    <div class="stat-label">Last 24h</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="statTwitter">—</div>
-                    <div class="stat-label">Twitter</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="statReddit">—</div>
-                    <div class="stat-label">Reddit</div>
-                </div>
-                <div class="stat-card highlight">
-                    <div class="stat-value" id="statCrossovers">—</div>
-                    <div class="stat-label">🔥 Crossovers</div>
-                </div>
+            <!-- Slim Stats Ribbon -->
+            <div class="slim-stats">
+                <div class="s-pill">TOTAL: <span id="statTotal">—</span></div>
+                <div class="s-pill">LAST 24H: <span id="statToday">—</span></div>
+                <div class="s-pill">𝕏: <span id="statTwitter">—</span></div>
+                <div class="s-pill">REDDIT: <span id="statReddit">—</span></div>
+                <div class="s-pill highlight">🔥: <span id="statCrossovers">—</span></div>
             </div>
 
             <!-- Feed -->
@@ -145,6 +130,6 @@
         </aside>
     </div>
 
-    <script src="/static/app.js?v=2.7"></script>
+    <script src="/static/app.js?v=2.8"></script>
 </body>
 </html>
