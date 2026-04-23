@@ -41,7 +41,7 @@
 
     /* Sizing */
     --sidebar-width: 280px;
-    --topbar-height: 50px;
+    --topbar-height: 64px;
     --radius: 12px;
     --radius-sm: 8px;
 }
@@ -341,7 +341,7 @@ body {
     height: var(--topbar-height);
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 28px;
     border-bottom: 3px solid var(--fire); /* Full bold orange separator */
     background: var(--bg-secondary);
     position: sticky;
@@ -355,7 +355,7 @@ body {
 
 .page-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -0.5px;
     text-transform: uppercase;
@@ -1018,38 +1018,6 @@ body {
     margin-top: 8px;
     line-height: 1.4;
 }
-/* Sidebar Stats */
-.sidebar-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: var(--bg-card);
-    padding: 12px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-}
-
-.s-stat {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.s-label {
-    color: var(--text-secondary);
-}
-
-.s-val {
-    color: var(--accent-light);
-    font-family: 'Outfit', sans-serif;
-}
-
-.s-stat.highlight .s-val {
-    color: var(--fire);
-    text-shadow: 0 0 5px var(--fire-glow);
-}
-
 .feed-container {
-    padding-top: 10px;
+    padding-top: 25px;
 }

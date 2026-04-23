@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css?v=2.6">
+    <link rel="stylesheet" href="/static/style.css?v=2.7">
 </head>
 <body>
 
@@ -70,18 +70,6 @@
             </div>
             <p class="bot-status-desc">Controls global background polling for all categories.</p>
         </div>
-
-        <!-- STATS (Moved here to save space) -->
-        <div class="sidebar-section stats-section">
-            <div class="section-title">ENGINE STATS</div>
-            <div class="sidebar-stats">
-                <div class="s-stat"><span class="s-label">Total:</span> <span id="statTotal" class="s-val">—</span></div>
-                <div class="s-stat"><span class="s-label">24h:</span> <span id="statToday" class="s-val">—</span></div>
-                <div class="s-stat"><span class="s-label">𝕏:</span> <span id="statTwitter" class="s-val">—</span></div>
-                <div class="s-stat"><span class="s-label">Reddit:</span> <span id="statReddit" class="s-val">—</span></div>
-                <div class="s-stat highlight"><span class="s-label">🔥:</span> <span id="statCrossovers" class="s-val">—</span></div>
-            </div>
-        </div>
     </aside>
 
     <div class="content-wrapper">
@@ -100,6 +88,30 @@
                     <button class="refresh-btn" id="refreshBtn" title="Refresh now">⟳</button>
                 </div>
             </header>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value" id="statTotal">—</div>
+                    <div class="stat-label">Total Alerts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statToday">—</div>
+                    <div class="stat-label">Last 24h</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statTwitter">—</div>
+                    <div class="stat-label">Twitter</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statReddit">—</div>
+                    <div class="stat-label">Reddit</div>
+                </div>
+                <div class="stat-card highlight">
+                    <div class="stat-value" id="statCrossovers">—</div>
+                    <div class="stat-label">🔥 Crossovers</div>
+                </div>
+            </div>
 
             <!-- Feed -->
             <div class="feed-container" id="feedContainer">
@@ -133,6 +145,6 @@
         </aside>
     </div>
 
-    <script src="/static/app.js?v=2.6"></script>
+    <script src="/static/app.js?v=2.7"></script>
 </body>
 </html>
