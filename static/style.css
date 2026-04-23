@@ -227,10 +227,10 @@ body {
 }
 
 .source-tab.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: white;
-    box-shadow: 0 2px 12px var(--accent-glow);
+    background: var(--fire); /* Matrix Green */
+    color: #ffffff;
+    border-color: var(--fire);
+    box-shadow: 0 4px 12px var(--fire-glow);
 }
 
 /* Filter List */
@@ -702,18 +702,31 @@ body {
     overflow-y: auto;
 }
 
-.right-sidebar-header {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
+/* Sidebar Logo Banner */
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border);
 }
 
-.right-sidebar-title {
+.logo {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    padding: 12px 20px;
+    border-radius: 40px; /* Deep Curve */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-text {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    color: var(--accent-light);
-    letter-spacing: 0.5px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .right-sidebar-subtitle {
@@ -954,7 +967,7 @@ body {
     .stats-bar {
         padding: 16px;
         gap: 8px;
-    <link rel="stylesheet" href="/static/style.css?v=3.7"></script>
+    <link rel="stylesheet" href="/static/style.css?v=3.9"></script>
     }
 
     .stat-card {
