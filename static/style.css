@@ -368,9 +368,10 @@ body {
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     z-index: 1;
-    align-items: flex-start; /* Branding stays left */
+    align-items: flex-start;
+    justify-content: center; /* Vertical Sync */
 }
 
 .hero-branding {
@@ -422,8 +423,9 @@ body {
     font-weight: 700;
     color: var(--text-muted);
     letter-spacing: 1px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     text-transform: uppercase;
+    line-height: 1; /* Precision centering */
 }
 
 .hud-value {
@@ -431,6 +433,7 @@ body {
     font-size: 1.3rem;
     font-weight: 700;
     color: #e8e8ef;
+    line-height: 1; /* Precision centering */
 }
 
 .hud-item.highlight .hud-value {
@@ -952,7 +955,7 @@ body {
     .stats-bar {
         padding: 16px;
         gap: 8px;
-    <link rel="stylesheet" href="/static/style.css?v=3.6"></script>
+    <link rel="stylesheet" href="/static/style.css?v=3.7"></script>
     }
 
     .stat-card {
