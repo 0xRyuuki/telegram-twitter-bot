@@ -42,8 +42,8 @@
     /* Sizing */
     --sidebar-width: 280px;
     --topbar-height: 64px;
-    --radius: 12px;
-    --radius-sm: 8px;
+    --radius: 24px;
+    --radius-sm: 12px;
 }
 
 [data-theme="light"] {
@@ -339,17 +339,20 @@ body {
 
 /* ============ SOFT GRAND HERO BANNER ============ */
 .hero-banner {
-    background: #0a0a0f; /* Deep Stealth Black (Matches Feed) */
-    border-bottom: 4px solid var(--fire); /* Bold vibrant line */
+    background: #0a0a0f; 
+    border: 2px solid var(--border); /* Full border instead of just bottom */
+    border-bottom: 4px solid var(--fire); 
     padding: 25px 40px;
     position: sticky;
-    top: 0;
+    top: 15px; /* Floating look */
+    margin: 0 15px 25px 15px;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
     min-height: 140px;
+    border-radius: 30px; /* Deep Curve */
 }
 
 .hero-bg-glow {
@@ -402,6 +405,11 @@ body {
 .hud-item {
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 20px;
+    border-radius: 20px; /* Curved Pods */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-width: 120px;
 }
 
 .hud-label {
@@ -933,17 +941,19 @@ body {
         border-bottom: 4px solid var(--accent);
         padding: 20px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        border-radius: 20px;
     }
 
     .stats-bar {
         padding: 16px;
         gap: 8px;
-    <script src="/static/app.js?v=3.3"></script>
+    <link rel="stylesheet" href="/static/style.css?v=3.5"></script>
     }
 
     .stat-card {
         min-width: 80px;
         padding: 12px 10px;
+        border-radius: 20px;
     }
 
     .stat-value {
